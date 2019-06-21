@@ -17,6 +17,15 @@ namespace :reports do
     end
   end
 
+  desc "restrictions"
+  task :restrictions, [:limit] => [:environment] do |t, args|
+    require 'restrictions'
+
+    Restrictions.process(args.limit)
+    puts "Task complete."
+
+  end
+
   desc "Report on Register Types"
   task :extract_information_on_register_types, [:limit] => [:environment] do |t, args|
     require 'extract_information_on_register_types'
