@@ -26,6 +26,15 @@ namespace :reports do
     puts "Completed Checking #{limit} unique names"
   end
 
+  desc "extract_piece_details"
+  task :extract_piece_details, [:limit] => [:environment] do |t, args|
+    require 'extract_piece_details'
+    limit = args.limit
+    puts "Extracting unique cen field names"
+    ExtractPieceDetails.process(limit)
+    puts "Completed Checking #{limit} unique names"
+  end
+
   desc "Unapproved_place_names list"
   task :report_on_files_for_each_register_church_place, [:chapman,:userid] => [:environment] do |t, args|
     require 'report_on_files_for_each_register_church_place'
